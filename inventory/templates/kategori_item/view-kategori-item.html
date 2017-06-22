@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1 class="page-header">Profiles</h1>
+	<p>
+		<a href="{% url 'tambah-kategori-item' %}" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus"></span>
+      		Tambah Kategori Item
+      	</a>
+  	</p>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nama Kategori</th>
+				<th colspan="3" class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for k in kategori %}
+				<tr>
+					<td>{{k.nama}}</td>
+					<td>
+						<a href="{% url 'edit-kategori-item' k.pk %}" class="btn btn-warning">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'delete-kategori-item' k.pk %}" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

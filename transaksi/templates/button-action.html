@@ -1,0 +1,20 @@
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-saved"></span>
+	Save
+</button>
+<a 
+	{% if request.resolver_match.url_name == "edit-transaksi-masuk" %}href="{% url 'edit-transaksi-masuk' masuk.pk %}" class="btn btn-warning"
+	{% elif request.resolver_match.url_name == "edit-transaksi-keluar" %}href="{% url 'edit-transaksi-keluar' keluar.pk %}" class="btn btn-warning"
+	{% else %} class="btn btn-warning disabled">
+	{% endif %}
+	<span class="glyphicon glyphicon-pencil"></span>
+	Edit
+</a>
+<a 
+	{% if request.resolver_match.url_name == "delete-transaksi-masuk" %}href="{% url 'delete-transaksi-masuk' masuk.pk %}" class="btn btn-danger"
+	{% elif request.resolver_match.url_name == "delete-transaksi-keluar" %}href="{% url 'delete-transaksi-keluar' keluar.pk %}" class="btn btn-danger"
+	{% else %} class="btn btn-danger disabled">
+	{% endif %}
+	<span class="glyphicon glyphicon-trash"></span>
+	Delete
+</a>

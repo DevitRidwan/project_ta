@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1 class="page-header">Jabatan</h1>
+	<p>
+		<a href="{% url 'tambah-jabatan' %}" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus"></span>
+      		Tambah Jabatan
+      	</a>
+  	</p>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nama Jabatan</th>
+				<th>Nominal</th>
+				<th colspan="3" class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for jabatan in jabatan %}
+				<tr>
+					<td>{{jabatan.nama_jabatan}}</td>
+					<td>{{jabatan.nominal}} / {{jabatan.jenis_gaji}}</td>
+					<td>
+						<a href="{% url 'edit-jabatan' jabatan.pk %}" class="btn btn-warning">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'delete-jabatan' jabatan.pk %}" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

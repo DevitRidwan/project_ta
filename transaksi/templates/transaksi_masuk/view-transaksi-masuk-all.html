@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1 class="page-header">Transaksi Masuk</h1>
+	<p>
+		<a href="{% url 'tambah-transaksi-masuk' %}" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus"></span>
+      		Tambah Transaksi Masuk
+      	</a>
+  	</p>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Kode Transaksi</th>
+				<th>Tanggal Transaksi</th>
+				<th>User</th>
+				<th>Item</th>
+				<th>Jumlah</th>
+				<th>Total Bayar</th>
+				<th colspan="3" class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for masuk in transaksi %}
+				<tr>
+					<td>{{masuk.pk}}</td>
+					<td>{{masuk.tgl_masuk}}</td>
+					<td>{{masuk.user}}</td>
+					<td>{{masuk.item}}</td>
+					<td>{{masuk.jumlah}}</td>
+					<td>{{masuk.bayar}}</td>
+					<td>
+						<a href="{% url 'edit-transaksi-masuk' masuk.pk %}" class="btn btn-warning">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'delete-transaksi-masuk' masuk.pk %}" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

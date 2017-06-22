@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1 class="page-header">Profiles</h1>
+	<p>
+		<a href="{% url 'tambah-menu' %}" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus"></span>
+      		Tambah Item
+      	</a>
+  	</p>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Detail</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for m in menu %}
+				<tr>
+					<tr>
+						<th rowspan="4"><img src="{{m.photo.url}}" height='50' width='50'></th>
+						<td>Nama Item: {{m.nama}}</td>
+					</tr>
+					<tr>
+						<td>Harga Item: {{m.harga}}</td>
+					</tr>
+					<tr>
+						<td>Deskripsi: {{m.deskripsi}}</td>
+					</tr>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'edit-menu' m.pk %}" class="btn btn-warning">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<a href="{% url 'delete-menu' m.pk %}" class="btn btn-danger">
+							<span class="glyphicon glyphicon-trash"></span>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
